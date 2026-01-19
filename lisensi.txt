@@ -1,1 +1,24 @@
-window.VALID_KEY = "RAHASIA123";
+(function(){
+    const VALID_KEY = "RAHASIA123"; // Ganti sesuka hati
+    let sK = localStorage.getItem('tg_license');
+    
+    if (!sK || sK !== VALID_KEY) {
+        const uK = prompt(sK ? "Lisensi Kadaluarsa! Masukkan baru:" : "Masukkan Lisensi:");
+        if (uK !== VALID_KEY) return alert("Lisensi Salah!");
+        localStorage.setItem('tg_license', uK);
+    }
+
+    // --- DISINI LANJUTKAN DENGAN KODE UI FB DUMPER ANDA ---
+    if (document.getElementById('tg-fb-dump')) document.getElementById('tg-fb-dump').remove();
+    const s = document.createElement('style');
+    s.innerHTML = "#tg-fb-dump{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;background:#17212b;color:#fff;font-family:sans-serif;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.5);z-index:999999;border:1px solid #2b353f;display:flex;flex-direction:column}#tg-h{background:#242f3d;padding:12px;font-weight:600;display:flex;justify-content:space-between;border-bottom:1px solid #171e25}#tg-b{padding:15px;display:flex;flex-direction:column;gap:12px}.tg-i{width:100%;background:#0e1621;border:1px solid #2b353f;border-radius:5px;padding:10px;color:#fff;font-size:12px;outline:none;box-sizing:border-box}.tg-btn{background:#3390ec;border:none;padding:10px;color:#fff;border-radius:5px;cursor:pointer;font-weight:600;font-size:12px;width:100%;display:block}#tg-l{height:200px;background:#0e1621;overflow-y:auto;padding:10px;font-family:monospace;font-size:11px;color:#39ff14;border:1px solid #2b353f;box-sizing:border-box}";
+    document.head.appendChild(s);
+    const p = document.createElement('div');
+    p.id = 'tg-fb-dump';
+    p.innerHTML = '<div id="tg-h"><span>FB Dumper Pro (Fixed UI)</span><span id="tg-cls" style="cursor:pointer">✕</span></div><div id="tg-b"><button class="tg-btn" id="tg-get" style="background:#2b353f">AMBIL TOKEN EAAB</button><input id="tg-tk" class="tg-i" placeholder="Access Token..."><input id="tg-tar" class="tg-i" placeholder="ID Target (pisahkan koma jika banyak)"><button class="tg-btn" id="tg-start">MULAI DUMP</button><div id="tg-l">Siap digunakan...</div><button id="tg-cp" class="tg-btn" style="background:#242f3d;display:none">SALIN SEMUA HASIL</button></div>';
+    document.body.appendChild(p);
+    document.getElementById('tg-cls').onclick = () => p.remove();
+    const l = document.getElementById('tg-l'), log = m => { l.innerHTML += `<div>${m}</div>`; l.scrollTop = l.scrollHeight };
+    // ... Tambahkan sisa logika dumper Anda di bawahnya ...
+    alert("Script Berhasil Dimuat!");
+})();
